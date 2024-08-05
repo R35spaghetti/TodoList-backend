@@ -1,8 +1,24 @@
 import {TodoList} from "./components/TodoList.tsx";
 import {ITodoNote} from "./interfaces.ts";
+import {AddTodoNote} from "./components/AddTodoNote.tsx";
+import {useState} from "react";
+import {AddTodo} from "./data.ts";
 
 export function App() {
 
+    const [todoNoteCollection, setTodoNoteCollection] = useState<ITodoNote[]>([]);
+    const handleSubmit = (data: ITodoNote) => {
+        const todoNote: ITodoNote = {
+            date: data.date,
+            author: data.author,
+            name: data.name,
+            description: data.description,
+            completed: data.completed,
+        };
+
+        const updatedTodoList = AddTodo(todoNoteCollection, todoNote);
+        setTodoNoteCollection(updatedTodoList);
+    };
     const notes: ITodoNote[] = [
         {
             date: new Date('2024-08-05'),
@@ -21,6 +37,7 @@ export function App() {
     ];
     return (
         <>
+            <AddTodoNote onSubmit={handleSubmit}/>
             <TodoList todoList={notes}/>
         </>
     );
