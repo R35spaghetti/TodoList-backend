@@ -51,6 +51,7 @@ export function Input(props: IInputProps): ReactElement {
                 className="input"
                 id={props.label}
                 type="text"
+                onChange={props.onChange}
                 value={props.value.toString()}
             />
         )
