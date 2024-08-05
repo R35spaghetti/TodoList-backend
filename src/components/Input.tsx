@@ -2,31 +2,44 @@ import {ChangeEventHandler, ReactElement} from "react";
 
 interface IInputProps {
     label: string;
-    type: "text" | "textarea" | "date";
+    type: "text" | "textarea" | "date" | "checkbox";
     onChange: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
-    value: string;
+    value: string | Date | boolean;
 }
 
-export function Input(inputs: IInputProps): ReactElement {
-    const classes = inputs.type === "text" ? "input-text"
-        : inputs.type === "date" ? "input-date" : "input-textarea";
+export function Input(props: IInputProps): ReactElement {
+    const classes = props.type === "text" ? "input-text"
+        : props.type === "date" ? "input-date"
+            : props.type === "textarea" ? "input-textarea"
+                : "input-checkbox";
 
     const renderInput = (): ReactElement => {
-        if (inputs.type === 'textarea') {
+        if (props.type === 'textarea') {
             return (
-                <textarea>
+                <textarea
                     className="input"
-                    id={inputs.label}
-                    value={inputs.value}
+                    id={props.label}
+                    onChange={props.onChange}
+                    value={props.value.toString()}
+                    >
                 </textarea>
             );
-        } else if (inputs.type === 'date') {
+        } else if (props.type === 'date') {
             return (
                 <input
                     className="input"
-                    id={inputs.label}
+                    id={props.label}
                     type="date"
-                    value={inputs.value}
+                    value={props.value instanceof Date ? props.value.toISOString().split('T')[0] : ""}
+                />
+            );
+        } else if (props.type === 'checkbox') {
+            return (
+                <input
+                    className="input"
+                    id={props.label}
+                    type="checkbox"
+                    checked={!!props.value}
                 />
             );
         }
@@ -34,17 +47,17 @@ export function Input(inputs: IInputProps): ReactElement {
         return (
             <input
                 className="input"
-                id={inputs.label}
+                id={props.label}
                 type="text"
-                value={inputs.value}
+                value={props.value.toString()}
             />
         )
     };
 
     return (
         <div className={classes}>
-            <label className="label" htmlFor={inputs.label}>
-                {inputs.label}
+            <label className="label" htmlFor={props.label}>
+                {props.label}
             </label>
             {renderInput()}
         </div>
