@@ -17,7 +17,7 @@ export function TodoNote({ todoNote }: ITodoProps): ReactElement {
             <label>description</label>
             <p>{todoNote.description}</p>
             <label>completed</label>
-            <p>{todoNote.completed.toString()}</p>
+            <p>{todoNote.completed}</p>
         </article>
     );
 }
