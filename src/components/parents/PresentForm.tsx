@@ -19,6 +19,10 @@ export function PresentForm() {
         const updatedTodoList = AddTodo(todoNoteCollection, todoNote);
         setTodoNoteCollection(updatedTodoList);
     };
+    const onToggleCompleted = (name: string) => {
+        setTodoNoteCollection(todoNoteCollection.map(item =>
+        item.name === name ? {...item, completed: !item.completed} : item))
+    }
 
     function HandleDelete(name: string) {
         const newNotes = DeleteNoteByName(todoNoteCollection, name)
@@ -28,7 +32,7 @@ export function PresentForm() {
     return (
         <>
             <AddTodoNote onSubmit={handleSubmit}/>
-            <TodoList todoList={todoNoteCollection} onDelete={HandleDelete}/>
+            <TodoList todoList={todoNoteCollection} onDelete={HandleDelete} onToggleCompleted={onToggleCompleted}/>
         </>
     );
 }
