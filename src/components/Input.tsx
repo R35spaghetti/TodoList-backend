@@ -30,6 +30,7 @@ export function Input(props: IInputProps): ReactElement {
                     className="input"
                     id={props.label}
                     type="date"
+                    onChange={props.onChange}
                     value={props.value instanceof Date ? props.value.toISOString().split('T')[0] : ""}
                 />
             );
@@ -39,6 +40,7 @@ export function Input(props: IInputProps): ReactElement {
                     className="input"
                     id={props.label}
                     type="checkbox"
+                    onChange={props.onChange}
                     checked={!!props.value}
                 />
             );
