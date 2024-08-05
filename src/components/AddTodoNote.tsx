@@ -32,13 +32,17 @@ export function AddTodoNote({onSubmit}: IAddTodoNoteProps): ReactElement {
                 <Input label="author"
                        onChange={(e) => setTodoNote(prevState => ({...prevState, author: e.target.value}))} type="text"
                        value={todoNote.author}/>
-                <Input label="name" onChange={(e) => setTodoNote(prevState => ({...prevState, name: e.target.value}))}
+                <Input label="name"
+                       onChange={(e) => setTodoNote(prevState => ({...prevState, name: e.target.value}))}
                        type="text" value={todoNote.name}/>
                 <Input label="description"
                        onChange={(e) => setTodoNote(prevState => ({...prevState, description: e.target.value}))}
                        type="textarea" value={todoNote.description}/>
                 <Input label="completed"
-                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTodoNote(prevState => ({...prevState, completed: e.target.checked}))}
+                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTodoNote(prevState => ({
+                           ...prevState,
+                           completed: e.target.checked
+                       }))}
                        type="checkbox" value={todoNote.completed}/>
                 <button type="submit">Submit</button>
             </form>
