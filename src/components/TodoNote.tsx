@@ -5,15 +5,19 @@ interface ITodoProps {
     todoNote: ITodoNote;
 }
 
-export function TodoNote({todoNote}: ITodoProps): ReactElement {
+export function TodoNote({ todoNote }: ITodoProps): ReactElement {
     return (
         <article className="todoNote">
+            <label>date</label>
             <p>{todoNote.date.toDateString()}</p>
+            <label>author</label>
             <p>{todoNote.author}</p>
+            <label>name</label>
             <p>{todoNote.name}</p>
+            <label>description</label>
             <p>{todoNote.description}</p>
-            <p>{todoNote.completed}</p>
-
+            <label>completed</label>
+            <p>{todoNote.completed.toString()}</p>
         </article>
     );
 }
