@@ -1,6 +1,6 @@
 import {ITodoNote} from "../../interfaces.ts";
 import {useState} from "react";
-import {AddTodo} from "../../data.ts";
+import {AddTodo, DeleteNoteByName} from "../../data.ts";
 import {TodoList} from "../TodoList.tsx";
 import {AddTodoNote} from "../AddTodoNote.tsx";
 
@@ -19,10 +19,16 @@ export function PresentForm() {
         const updatedTodoList = AddTodo(todoNoteCollection, todoNote);
         setTodoNoteCollection(updatedTodoList);
     };
+
+    function HandleDelete(name: string) {
+        const newNotes = DeleteNoteByName(todoNoteCollection, name)
+        setTodoNoteCollection(newNotes);
+    }
+
     return (
         <>
             <AddTodoNote onSubmit={handleSubmit}/>
-            <TodoList todoList={todoNoteCollection}/>
+            <TodoList todoList={todoNoteCollection} onDelete={HandleDelete}/>
         </>
     );
 }
