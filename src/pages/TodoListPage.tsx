@@ -12,7 +12,7 @@ export function TodoListPage(): ReactElement {
                 <div key={item.name}>
                     <TodoNote todoNote={item} />
                     <button onClick={() => onDelete(item.name)}>Delete</button>
-                    <input type="checkbox" id="completed" checked={item.completed} onClick={() => onToggleCompleted(item.name)}/>COMPLETED
+                    <input type="checkbox" id="completed" checked={item.completed} onChange={() => onToggleCompleted(item.name)} onClick={() => onToggleCompleted(item.name)}/>COMPLETED
                 </div>
             ))}
         </section>
