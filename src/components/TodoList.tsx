@@ -1,19 +1,14 @@
-import {ITodoNote} from "../interfaces.ts";
 import {ReactElement} from "react";
 import {TodoNote} from "./TodoNote.tsx";
+import {useTodoNoteContext} from "../hooks/useTodoNoteContext.ts";
 
-interface ITodoListProps
-{
-    todoList: ITodoNote[];
-    onDelete: (data: string) => void;
-    onToggleCompleted: ToggleCompleted;
-}
-type ToggleCompleted = (name: string) => void;
 
-export function TodoList({todoList, onDelete, onToggleCompleted}:ITodoListProps): ReactElement {
+export function TodoList(): ReactElement {
+    const {todoNotes, onDelete, onToggleCompleted} = useTodoNoteContext();
+
     return (
         <section className="todo-list">
-            {todoList.map((item) => (
+            {todoNotes.map((item) => (
                 <div key={item.name}>
                     <TodoNote todoNote={item} />
                     <button onClick={() => onDelete(item.name)}>Delete</button>
