@@ -30,8 +30,8 @@ export function PresentForm() : ReactElement {
         setTodoNotes(newNotes);
     }
 
-    function onUpdate(name: string) {
-        const updatedNote = UpdateSpecificTodoNote(todoNotes, name);
+    function onUpdate(note: ITodoNote) {
+        const updatedNote = UpdateSpecificTodoNote(todoNotes, note);
         setTodoNotes(updatedNote);
     }
 

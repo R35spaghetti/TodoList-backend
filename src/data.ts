@@ -8,8 +8,8 @@ export function DeleteNoteByName(todoNotes: ITodoNote[], index: string): ITodoNo
     return todoNotes.filter(todoNotes => todoNotes.name !== index);
 }
 
-export function UpdateSpecificTodoNote(notes: ITodoNote[], name: string):ITodoNote[] {
-    const index = notes.findIndex(note => note.name === name);
+export function UpdateSpecificTodoNote(notes: ITodoNote[], noteToUpdate: ITodoNote):ITodoNote[] {
+    const index = notes.findIndex(note => note.name === noteToUpdate.name);
     if (index > -1) {
         return [...notes.slice(0, index), ...notes.slice(index + 1)];
     }

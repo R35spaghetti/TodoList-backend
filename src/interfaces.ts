@@ -10,5 +10,5 @@ export interface ITodoNoteContext {
     onSubmit: (note: ITodoNote) => void;
     onDelete: (data: string) => void;
     onToggleCompleted: (name: string) => void;
-    onUpdate: (data: string) => void;
+    onUpdate: (note: ITodoNote) => void;
 }
