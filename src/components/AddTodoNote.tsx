@@ -2,10 +2,12 @@ import {ITodoNote} from "../interfaces.ts";
 import React, {FormEventHandler, ReactElement, useState} from "react";
 import {Input} from "./Input.tsx";
 import {useTodoNoteContext} from "../hooks/useTodoNoteContext.ts";
+import {useNavigate} from "react-router-dom";
 
 export function AddTodoNote(): ReactElement {
 
     const {onSubmit} = useTodoNoteContext();
+    const navigate = useNavigate();
     const [todoNote, setTodoNote] = useState<ITodoNote>(
         {
             date: new Date(),
@@ -19,6 +21,7 @@ export function AddTodoNote(): ReactElement {
     const handleOnSubmit: FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault();
         onSubmit(todoNote);
+        navigate("/");
 
     }
     return (
