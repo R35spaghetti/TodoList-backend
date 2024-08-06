@@ -1,6 +1,6 @@
 import {ReactElement, useState} from "react";
 import {ITodoNote, ITodoNoteContext} from "../../interfaces.ts";
-import {AddTodo, DeleteNoteByName} from "../../data.ts";
+import {AddTodo, DeleteNoteByName, UpdateSpecificTodoNote} from "../../data.ts";
 import {Outlet} from "react-router-dom";
 
 export function PresentForm() : ReactElement {
@@ -29,12 +29,19 @@ export function PresentForm() : ReactElement {
         const newNotes = DeleteNoteByName(todoNotes, name)
         setTodoNotes(newNotes);
     }
+
+    function onUpdate(name: string) {
+        const updatedNote = UpdateSpecificTodoNote(todoNotes, name);
+        setTodoNotes(updatedNote);
+    }
+
+
     const todoNoteContext: ITodoNoteContext = {
         todoNotes,
         onToggleCompleted,
         onDelete,
         onSubmit,
-
+        onUpdate,
     }
 
 
