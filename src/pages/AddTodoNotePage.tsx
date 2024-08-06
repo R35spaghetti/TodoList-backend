@@ -1,10 +1,10 @@
 import {ITodoNote} from "../interfaces.ts";
 import React, {FormEventHandler, ReactElement, useState} from "react";
-import {Input} from "./Input.tsx";
+import {Input} from "../components/Input.tsx";
 import {useTodoNoteContext} from "../hooks/useTodoNoteContext.ts";
 import {useNavigate} from "react-router-dom";
 
-export function AddTodoNote(): ReactElement {
+export function AddTodoNotePage(): ReactElement {
 
     const {onSubmit} = useTodoNoteContext();
     const navigate = useNavigate();

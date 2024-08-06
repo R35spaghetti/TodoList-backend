@@ -1,9 +1,9 @@
 import {ReactElement} from "react";
-import {TodoNote} from "./TodoNote.tsx";
+import {TodoNote} from "../components/TodoNote.tsx";
 import {useTodoNoteContext} from "../hooks/useTodoNoteContext.ts";
 
 
-export function TodoList(): ReactElement {
+export function TodoListPage(): ReactElement {
     const {todoNotes, onDelete, onToggleCompleted} = useTodoNoteContext();
 
     return (
