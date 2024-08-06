@@ -1,13 +1,11 @@
 import {ITodoNote} from "../interfaces.ts";
 import React, {FormEventHandler, ReactElement, useState} from "react";
 import {Input} from "./Input.tsx";
+import {useTodoNoteContext} from "../hooks/useTodoNoteContext.ts";
 
-interface IAddTodoNoteProps {
-    onSubmit: (data: ITodoNote) => void;
-}
+export function AddTodoNote(): ReactElement {
 
-export function AddTodoNote({onSubmit}: IAddTodoNoteProps): ReactElement {
-
+    const {onSubmit} = useTodoNoteContext();
     const [todoNote, setTodoNote] = useState<ITodoNote>(
         {
             date: new Date(),

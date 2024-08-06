@@ -1,13 +1,14 @@
-import {ITodoNote} from "../../interfaces.ts";
-import {useState} from "react";
+import {ReactElement, useState} from "react";
+import {ITodoNote, ITodoNoteContext} from "../../interfaces.ts";
 import {AddTodo, DeleteNoteByName} from "../../data.ts";
-import {TodoList} from "../TodoList.tsx";
-import {AddTodoNote} from "../AddTodoNote.tsx";
+import {Outlet} from "react-router-dom";
 
-export function PresentForm() {
+export function PresentForm() : ReactElement {
 
-    const [todoNoteCollection, setTodoNoteCollection] = useState<ITodoNote[]>([]);
-    const handleSubmit = (data: ITodoNote) => {
+
+
+    const [todoNotes, setTodoNotes] = useState<ITodoNote[]>([]);
+    const onSubmit = (data: ITodoNote) => {
         const todoNote: ITodoNote = {
             date: data.date,
             author: data.author,
@@ -16,23 +17,30 @@ export function PresentForm() {
             completed: data.completed,
         };
 
-        const updatedTodoList = AddTodo(todoNoteCollection, todoNote);
-        setTodoNoteCollection(updatedTodoList);
+        const updatedTodoList = AddTodo(todoNotes, todoNote);
+        setTodoNotes(updatedTodoList);
     };
     const onToggleCompleted = (name: string) => {
-        setTodoNoteCollection(todoNoteCollection.map(item =>
+        setTodoNotes(todoNotes.map(item =>
         item.name === name ? {...item, completed: !item.completed} : item))
     }
 
-    function HandleDelete(name: string) {
-        const newNotes = DeleteNoteByName(todoNoteCollection, name)
-        setTodoNoteCollection(newNotes);
+    function onDelete(name: string) {
+        const newNotes = DeleteNoteByName(todoNotes, name)
+        setTodoNotes(newNotes);
     }
+    const todoNoteContext: ITodoNoteContext = {
+        todoNotes,
+        onToggleCompleted,
+        onDelete,
+        onSubmit,
+
+    }
+
 
     return (
         <>
-            <AddTodoNote onSubmit={handleSubmit}/>
-            <TodoList todoList={todoNoteCollection} onDelete={HandleDelete} onToggleCompleted={onToggleCompleted}/>
+            <Outlet context = {todoNoteContext} />
         </>
     );
 }
