@@ -5,3 +5,10 @@ export interface ITodoNote {
     description: string;
     completed: boolean;
 }
+export interface ITodoNoteContext {
+    todoNotes: ITodoNote[];
+    onSubmit: (note: ITodoNote) => void;
+    onDelete: (data: string) => void;
+    onToggleCompleted: ToggleCompleted;
+}
+type ToggleCompleted = (name: string) => void;
