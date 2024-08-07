@@ -10,8 +10,8 @@ export const router = createBrowserRouter(
         <Route path="/" element={<App/>}>
             <Route index element={<TodoListPage/>}/>
             <Route path="form" element={<AddTodoNotePage/>}/>
-            <Route path="about" element={<AboutPage />} />
-            <Route path="edit/:id" element={<EditPage/>} />
+            <Route path="about" element={<AboutPage/>}/>
+            <Route path="edit/:id" element={<EditPage/>}/>
         </Route>
     )
 )
