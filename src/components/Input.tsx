@@ -14,48 +14,49 @@ export function Input(props: IInputProps): ReactElement {
                 : "input-checkbox";
 
     const renderInput = (): ReactElement => {
-        if (props.type === 'textarea') {
-            return (
-                <textarea
-                    className="input"
-                    id={props.label}
-                    onChange={props.onChange}
-                    value={props.value.toString()}
+        switch (props.type) {
+            case "textarea":
+                return (
+                    <textarea
+                        className="input"
+                        id={props.label}
+                        onChange={props.onChange}
+                        value={props.value.toString()}
                     >
                 </textarea>
-            );
-        } else if (props.type === 'date') {
-            return (
-                <input
-                    className="input"
-                    id={props.label}
-                    type="date"
-                    onChange={props.onChange}
-                    value={props.value instanceof Date ? props.value.toISOString().split('T')[0] : ""}
-                />
-            );
-        } else if (props.type === 'checkbox') {
-            return (
-                <input
-                    className="input"
-                    id={props.label}
-                    type="checkbox"
-                    onChange={props.onChange}
-                    checked={!!props.value}
-                />
-            );
+                );
+            case "date":
+                return (
+                    <input
+                        className="input"
+                        id={props.label}
+                        type="date"
+                        onChange={props.onChange}
+                        value={props.value instanceof Date ? props.value.toISOString().split('T')[0] : ""}
+                    />
+                );
+            case "checkbox":
+                return (
+                    <input
+                        className="input"
+                        id={props.label}
+                        type="checkbox"
+                        onChange={props.onChange}
+                        checked={!!props.value}
+                    />
+                );
+            case "text":
+                return (
+                    <input
+                        className="input"
+                        id={props.label}
+                        type="text"
+                        onChange={props.onChange}
+                        value={props.value.toString()}
+                    />
+                )
         }
-
-        return (
-            <input
-                className="input"
-                id={props.label}
-                type="text"
-                onChange={props.onChange}
-                value={props.value.toString()}
-            />
-        )
-    };
+    }
 
     return (
         <div className={classes}>
