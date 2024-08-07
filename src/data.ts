@@ -17,11 +17,11 @@ export function UpdateSpecificTodoNote(notes: ITodoNote[], noteToUpdate: ITodoNo
     return notes;
 }
 export function UpdateNeighbours(notes: ITodoNote[],chosenIndex: number, neighbour: number): ITodoNote[] {
-
-        const tempValue = notes[chosenIndex];
-        notes[chosenIndex] = notes[neighbour];
-        notes[neighbour] = tempValue;
-        return notes;
+    const updatedNotes = [...notes];
+    const tempValue = updatedNotes[chosenIndex];
+    updatedNotes[chosenIndex] = updatedNotes[neighbour];
+    updatedNotes[neighbour] = tempValue;
+    return updatedNotes;
 }
 
 export const generateUniqueId = (() => {
