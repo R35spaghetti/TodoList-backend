@@ -4,7 +4,7 @@ export function AddTodo(collection: ITodoNote[], todoNote: ITodoNote): ITodoNote
     return [...collection, todoNote]
 }
 
-export function DeleteNoteByName(todoNotes: ITodoNote[], index: number): ITodoNote[] {
+export function DeleteNoteById(todoNotes: ITodoNote[], index: number): ITodoNote[] {
     return todoNotes.filter(todoNotes => todoNotes.id !== index);
 }
 export function UpdateSpecificTodoNote(notes: ITodoNote[], noteToUpdate: ITodoNote): ITodoNote[] {
