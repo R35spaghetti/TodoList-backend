@@ -18,6 +18,6 @@ export function UpdateSpecificTodoNote(notes: ITodoNote[], noteToUpdate: ITodoNo
 }
 
 export const generateUniqueId = (() => {
-    let id = 0;
+    let id = 1;
     return () => ++id;
 })();
