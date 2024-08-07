@@ -15,6 +15,7 @@ export function EditPage() : ReactElement
 
     const [updateTodoNote, setUpdateTodoNote] = useState<ITodoNote>(
         {
+            id: noteToUpdate.id,
             date: noteToUpdate.date,
             author: noteToUpdate.author,
             name: noteToUpdate.name,

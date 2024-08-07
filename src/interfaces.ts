@@ -1,4 +1,5 @@
 export interface ITodoNote {
+    id: number;
     date: Date;
     author: string;
     name: string;
@@ -8,7 +9,7 @@ export interface ITodoNote {
 export interface ITodoNoteContext {
     todoNotes: ITodoNote[];
     onSubmit: (note: ITodoNote) => void;
-    onDelete: (data: string) => void;
-    onToggleCompleted: (name: string) => void;
+    onDelete: (id: number) => void;
+    onToggleCompleted: (id: number) => void;
     onUpdate: (note: ITodoNote) => void;
 }

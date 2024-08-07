@@ -3,6 +3,7 @@ import React, {FormEventHandler, ReactElement, useState} from "react";
 import {Input} from "../components/Input.tsx";
 import {useTodoNoteContext} from "../hooks/useTodoNoteContext.ts";
 import {useNavigate} from "react-router-dom";
+import {generateUniqueId} from "../data.ts";
 
 export function AddTodoNotePage(): ReactElement {
 
@@ -10,6 +11,7 @@ export function AddTodoNotePage(): ReactElement {
     const navigate = useNavigate();
     const [todoNote, setTodoNote] = useState<ITodoNote>(
         {
+            id: generateUniqueId(),
             date: new Date(),
             author: "",
             name: "",

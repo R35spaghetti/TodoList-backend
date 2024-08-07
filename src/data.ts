@@ -4,12 +4,11 @@ export function AddTodo(collection: ITodoNote[], todoNote: ITodoNote): ITodoNote
     return [...collection, todoNote]
 }
 
-export function DeleteNoteByName(todoNotes: ITodoNote[], index: string): ITodoNote[] {
-    return todoNotes.filter(todoNotes => todoNotes.name !== index);
+export function DeleteNoteByName(todoNotes: ITodoNote[], index: number): ITodoNote[] {
+    return todoNotes.filter(todoNotes => todoNotes.id !== index);
 }
-
 export function UpdateSpecificTodoNote(notes: ITodoNote[], noteToUpdate: ITodoNote): ITodoNote[] {
-    const index = notes.findIndex(note => note.name === noteToUpdate.name);
+    const index = notes.findIndex(note => note.id === noteToUpdate.id);
     if (index > -1) {
         const updatedNotes = [...notes];
         updatedNotes[index] = noteToUpdate;
@@ -17,3 +16,8 @@ export function UpdateSpecificTodoNote(notes: ITodoNote[], noteToUpdate: ITodoNo
     }
     return notes;
 }
+
+export const generateUniqueId = (() => {
+    let id = 0;
+    return () => ++id;
+})();

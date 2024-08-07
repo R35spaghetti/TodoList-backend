@@ -10,6 +10,7 @@ export function PresentForm() : ReactElement {
     const [todoNotes, setTodoNotes] = useState<ITodoNote[]>([]);
     const onSubmit = (data: ITodoNote) => {
         const todoNote: ITodoNote = {
+            id: data.id,
             date: data.date,
             author: data.author,
             name: data.name,
@@ -20,13 +21,13 @@ export function PresentForm() : ReactElement {
         const updatedTodoList = AddTodo(todoNotes, todoNote);
         setTodoNotes(updatedTodoList);
     };
-    const onToggleCompleted = (name: string) => {
+    const onToggleCompleted = (id: number) => {
         setTodoNotes(todoNotes.map(item =>
-        item.name === name ? {...item, completed: !item.completed} : item))
+        item.id === id ? {...item, completed: !item.completed} : item))
     }
 
-    function onDelete(name: string) {
-        const newNotes = DeleteNoteByName(todoNotes, name)
+    function onDelete(id: number) {
+        const newNotes = DeleteNoteByName(todoNotes, id)
         setTodoNotes(newNotes);
     }
 
