@@ -1,11 +1,10 @@
 import {ReactElement, useState} from "react";
 import {ITodoNote, ITodoNoteContext} from "../../interfaces.ts";
-import {AddTodo, DeleteNoteById, UpdateSpecificTodoNote} from "../../data.ts";
+import {AddTodo, DeleteNoteById, UpdateNeighbours, UpdateSpecificTodoNote} from "../../data.ts";
 import {Outlet} from "react-router-dom";
 import {Header} from "../Header.tsx";
 
-export function PresentForm() : ReactElement {
-
+export function PresentForm(): ReactElement {
 
 
     const [todoNotes, setTodoNotes] = useState<ITodoNote[]>([]);
@@ -24,7 +23,7 @@ export function PresentForm() : ReactElement {
     };
     const onToggleCompleted = (name: string) => {
         setTodoNotes(todoNotes.map(item =>
-        item.name === name ? {...item, completed: !item.completed} : item))
+            item.name === name ? {...item, completed: !item.completed} : item))
     }
 
     function onDelete(id: number) {
@@ -37,6 +36,10 @@ export function PresentForm() : ReactElement {
         setTodoNotes(updatedNote);
     }
 
+    function onUpdateNeighbours(notes: ITodoNote[], chosenId: number, neighbourId: number): ITodoNote[] {
+        return UpdateNeighbours(notes, chosenId, neighbourId);
+    }
+
 
     const todoNoteContext: ITodoNoteContext = {
         todoNotes,
@@ -44,13 +47,14 @@ export function PresentForm() : ReactElement {
         onDelete,
         onSubmit,
         onUpdate,
+        onUpdateNeighbours,
     }
 
 
     return (
         <>
             <Header/>
-            <Outlet context = {todoNoteContext} />
+            <Outlet context={todoNoteContext}/>
         </>
     );
 }

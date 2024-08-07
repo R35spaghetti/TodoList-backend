@@ -12,4 +12,5 @@ export interface ITodoNoteContext {
     onDelete: (id: number) => void;
     onToggleCompleted: (name: string) => void;
     onUpdate: (note: ITodoNote) => void;
+    onUpdateNeighbours: (notes: ITodoNote[], chosenId: number, neighbourId: number) => ITodoNote[];
 }
