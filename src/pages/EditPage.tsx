@@ -6,10 +6,9 @@ import {useNavigate, useParams} from "react-router-dom";
 
 export function EditPage() : ReactElement
 {
-    const { index } = useParams();
-    const safeIndex = index || '0';
+    const { id } = useParams();
     const {todoNotes, onUpdate} =  useTodoNoteContext();
-    const noteToUpdate = todoNotes[parseInt(safeIndex)];
+    const noteToUpdate = todoNotes[parseInt(id!)];
     const navigate = useNavigate();
 
 
@@ -23,7 +22,7 @@ export function EditPage() : ReactElement
             completed: noteToUpdate.completed,
         }
     )
-
+    console.log(noteToUpdate.id)
     const handleOnSubmit: FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault();
         onUpdate(updateTodoNote);
