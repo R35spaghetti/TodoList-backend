@@ -18,13 +18,14 @@ export function UpdateSpecificTodoNote(notes: ITodoNote[], noteToUpdate: ITodoNo
 }
 export function UpdateNeighbours(notes: ITodoNote[], chosenId: number, neighbourId: number): ITodoNote[] {
 
-    const clickedId = notes.findIndex(note => note.id === chosenId);
-    if(clickedId > -1)
+    const chosenIndex = notes.findIndex(note => note.id === chosenId);
+    const neighbourIndex = notes.findIndex(note => note.id === neighbourId);
+    if(chosenIndex !== -1 && neighbourIndex !== -1)
     {
-        const updatedNotes = [...notes];
-        const tempValue = updatedNotes[neighbourId];
-        updatedNotes[neighbourId] = updatedNotes[clickedId];
-        updatedNotes[clickedId] = tempValue;
+        const tempValue = notes[chosenIndex];
+        notes[chosenIndex] = notes[neighbourIndex];
+        notes[neighbourIndex] = tempValue;
+        return notes;
     }
 
     return notes;
