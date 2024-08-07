@@ -2,6 +2,7 @@ import {ReactElement, useState} from "react";
 import {ITodoNote, ITodoNoteContext} from "../../interfaces.ts";
 import {AddTodo, DeleteNoteByName, UpdateSpecificTodoNote} from "../../data.ts";
 import {Outlet} from "react-router-dom";
+import {Header} from "../Header.tsx";
 
 export function PresentForm() : ReactElement {
 
@@ -48,6 +49,7 @@ export function PresentForm() : ReactElement {
 
     return (
         <>
+            <Header/>
             <Outlet context = {todoNoteContext} />
         </>
     );
