@@ -8,6 +8,7 @@ export function PresentForm(): ReactElement {
 
 
     const [todoNotes, setTodoNotes] = useState<ITodoNote[]>([]);
+
     const onSubmit = (data: ITodoNote) => {
         const todoNote: ITodoNote = {
             id: data.id,
@@ -36,8 +37,9 @@ export function PresentForm(): ReactElement {
         setTodoNotes(updatedNote);
     }
 
-    function onUpdateNeighbours(notes: ITodoNote[], chosenId: number, neighbourId: number): ITodoNote[] {
-        return UpdateNeighbours(notes, chosenId, neighbourId);
+    function onUpdateNeighbours(chosenIndex: number ,neighbourId: number) {
+        const updatedNotes  = UpdateNeighbours(todoNotes, chosenIndex, neighbourId);
+        setTodoNotes(updatedNotes);
     }
 
 

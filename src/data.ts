@@ -16,19 +16,12 @@ export function UpdateSpecificTodoNote(notes: ITodoNote[], noteToUpdate: ITodoNo
     }
     return notes;
 }
-export function UpdateNeighbours(notes: ITodoNote[], chosenId: number, neighbourId: number): ITodoNote[] {
+export function UpdateNeighbours(notes: ITodoNote[],chosenIndex: number, neighbour: number): ITodoNote[] {
 
-    const chosenIndex = notes.findIndex(note => note.id === chosenId);
-    const neighbourIndex = notes.findIndex(note => note.id === neighbourId);
-    if(chosenIndex !== -1 && neighbourIndex !== -1)
-    {
         const tempValue = notes[chosenIndex];
-        notes[chosenIndex] = notes[neighbourIndex];
-        notes[neighbourIndex] = tempValue;
+        notes[chosenIndex] = notes[neighbour];
+        notes[neighbour] = tempValue;
         return notes;
-    }
-
-    return notes;
 }
 
 export const generateUniqueId = (() => {
