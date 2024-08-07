@@ -1,6 +1,6 @@
 import {ReactElement, useState} from "react";
 import {ITodoNote, ITodoNoteContext} from "../../interfaces.ts";
-import {AddTodo, DeleteNoteById, UpdateNeighbours, UpdateSpecificTodoNote} from "../../data.ts";
+import {AddTodo, DeleteNoteById, SortTodos, UpdateNeighbours, UpdateSpecificTodoNote} from "../../data.ts";
 import {Outlet} from "react-router-dom";
 import {Header} from "../Header.tsx";
 
@@ -41,7 +41,11 @@ export function PresentForm(): ReactElement {
         const updatedNotes  = UpdateNeighbours(todoNotes, chosenIndex, neighbourId);
         setTodoNotes(updatedNotes);
     }
-
+    function sortTodos(criterion: "date"|"author")
+    {
+        const sortedNotes = SortTodos(todoNotes, criterion);
+        setTodoNotes(sortedNotes);
+    }
 
     const todoNoteContext: ITodoNoteContext = {
         todoNotes,
@@ -50,6 +54,7 @@ export function PresentForm(): ReactElement {
         onSubmit,
         onUpdate,
         onUpdateNeighbours,
+        sortTodos,
     }
 
 

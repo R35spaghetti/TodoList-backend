@@ -13,4 +13,5 @@ export interface ITodoNoteContext {
     onToggleCompleted: (name: string) => void;
     onUpdate: (note: ITodoNote) => void;
     onUpdateNeighbours: (chosenIndex: number ,index: number) => void;
+    sortTodos: (criterion: "date"|"author") => void;
 }
