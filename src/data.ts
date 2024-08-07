@@ -26,7 +26,7 @@ export function UpdateNeighbours(notes: ITodoNote[], chosenIndex: number, neighb
     return updatedNotes;
 }
 
-export function SortTodos(notes: ITodoNote[], criterion: "date"|"author"): ITodoNote[] {
+export function SortTodos(notes: ITodoNote[], criterion: "date" | "author"): ITodoNote[] {
     if (criterion == "date") {
         return [...notes].sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
     }

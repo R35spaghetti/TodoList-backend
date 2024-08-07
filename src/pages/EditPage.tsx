@@ -4,10 +4,9 @@ import {ITodoNote} from "../interfaces.ts";
 import {Input} from "../components/Input.tsx";
 import {useNavigate, useParams} from "react-router-dom";
 
-export function EditPage() : ReactElement
-{
-    const { id } = useParams();
-    const {todoNotes, onUpdate} =  useTodoNoteContext();
+export function EditPage(): ReactElement {
+    const {id} = useParams();
+    const {todoNotes, onUpdate} = useTodoNoteContext();
     const noteToUpdate = todoNotes[parseInt(id!)];
     const navigate = useNavigate();
 
@@ -34,7 +33,8 @@ export function EditPage() : ReactElement
                    onChange={(e) => setUpdateTodoNote(prevState => ({...prevState, date: new Date(e.target.value)}))}
                    type="date" value={updateTodoNote.date}/>
             <Input label="author"
-                   onChange={(e) => setUpdateTodoNote(prevState => ({...prevState, author: e.target.value}))} type="text"
+                   onChange={(e) => setUpdateTodoNote(prevState => ({...prevState, author: e.target.value}))}
+                   type="text"
                    value={updateTodoNote.author}/>
             <Input label="name"
                    onChange={(e) => setUpdateTodoNote(prevState => ({...prevState, name: e.target.value}))}

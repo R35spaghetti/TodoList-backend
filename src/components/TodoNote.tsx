@@ -5,7 +5,7 @@ interface ITodoProps {
     todoNote: ITodoNote;
 }
 
-export function TodoNote({ todoNote }: ITodoProps): ReactElement {
+export function TodoNote({todoNote}: ITodoProps): ReactElement {
     return (
         <article className="todoNote">
             <label>date</label>

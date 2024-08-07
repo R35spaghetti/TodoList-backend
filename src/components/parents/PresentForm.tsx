@@ -37,12 +37,12 @@ export function PresentForm(): ReactElement {
         setTodoNotes(updatedNote);
     }
 
-    function onUpdateNeighbours(chosenIndex: number ,neighbourId: number) {
-        const updatedNotes  = UpdateNeighbours(todoNotes, chosenIndex, neighbourId);
+    function onUpdateNeighbours(chosenIndex: number, neighbourId: number) {
+        const updatedNotes = UpdateNeighbours(todoNotes, chosenIndex, neighbourId);
         setTodoNotes(updatedNotes);
     }
-    function sortTodos(criterion: "date"|"author")
-    {
+
+    function sortTodos(criterion: "date" | "author") {
         const sortedNotes = SortTodos(todoNotes, criterion);
         setTodoNotes(sortedNotes);
     }
