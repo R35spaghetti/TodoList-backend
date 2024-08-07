@@ -2,6 +2,7 @@ import {ReactElement} from "react";
 import {TodoNote} from "../components/TodoNote.tsx";
 import {useTodoNoteContext} from "../hooks/useTodoNoteContext.ts";
 import {Link} from "react-router-dom";
+import {SortsNotes} from "../components/SortsNotes.tsx";
 
 
 export function TodoListPage(): ReactElement {
@@ -9,9 +10,12 @@ export function TodoListPage(): ReactElement {
 
     return (
         <section className="todo-list">
-            {todoNotes.map((item,index) => (
+            <div>
+            <SortsNotes/>
+            </div>
+            {todoNotes.map((item, index) => (
                 <div key={item.id}>
-                    <TodoNote todoNote={item} />
+                    <TodoNote todoNote={item}/>
                     <button onClick={() => onDelete(item.id)}>Delete</button>
                     <input type="checkbox" id="completed" checked={item.completed} onChange={() => onToggleCompleted(item.name)}/>COMPLETED
                     <Link to={`/edit/${index}`}>EDIT</Link>
