@@ -22,7 +22,6 @@ export function EditPage() : ReactElement
             completed: noteToUpdate.completed,
         }
     )
-    console.log(noteToUpdate.id)
     const handleOnSubmit: FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault();
         onUpdate(updateTodoNote);
