@@ -22,9 +22,9 @@ export function PresentForm() : ReactElement {
         const updatedTodoList = AddTodo(todoNotes, todoNote);
         setTodoNotes(updatedTodoList);
     };
-    const onToggleCompleted = (id: number) => {
+    const onToggleCompleted = (name: string) => {
         setTodoNotes(todoNotes.map(item =>
-        item.id === id ? {...item, completed: !item.completed} : item))
+        item.name === name ? {...item, completed: !item.completed} : item))
     }
 
     function onDelete(id: number) {
