@@ -3,6 +3,7 @@ import {useTodoNoteContext} from "../hooks/useTodoNoteContext.ts";
 import {ITodoNote} from "../interfaces.ts";
 import {Input} from "../components/Input.tsx";
 import {useNavigate, useParams} from "react-router-dom";
+import "./TodoNote-Form.css"
 
 export function EditPage(): ReactElement {
     const {id} = useParams();
@@ -28,7 +29,7 @@ export function EditPage(): ReactElement {
 
     }
     return (
-        <form className="edit-toDoNote" onSubmit={handleOnSubmit}>
+        <form className="todo-note-form" onSubmit={handleOnSubmit}>
             <Input label="date"
                    onChange={(e) => setUpdateTodoNote(prevState => ({...prevState, date: new Date(e.target.value)}))}
                    type="date" value={updateTodoNote.date}/>

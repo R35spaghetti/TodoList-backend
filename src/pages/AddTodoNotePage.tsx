@@ -1,9 +1,10 @@
 import {ITodoNote} from "../interfaces.ts";
-import React, {FormEventHandler, ReactElement, useState} from "react";
+import {FormEventHandler, ReactElement, useState} from "react";
 import {Input} from "../components/Input.tsx";
 import {useTodoNoteContext} from "../hooks/useTodoNoteContext.ts";
 import {useNavigate} from "react-router-dom";
 import {generateUniqueId} from "../data.ts";
+import "./TodoNote-Form.css";
 
 export function AddTodoNotePage(): ReactElement {
 
@@ -28,7 +29,7 @@ export function AddTodoNotePage(): ReactElement {
     }
     return (
         <>
-            <form className="add-toDoNote" onSubmit={handleOnSubmit}>
+            <form className="todo-note-form" onSubmit={handleOnSubmit}>
                 <Input label="date"
                        onChange={(e) => setTodoNote(prevState => ({...prevState, date: new Date(e.target.value)}))}
                        type="date" value={todoNote.date}/>
