@@ -17,7 +17,7 @@ export function TodoListPage(): ReactElement {
                         <TodoNote todoNote={item}/>
                         <button onClick={() => onDelete(item.id)}>Delete</button>
                         <input type="checkbox" id="completed" checked={item.completed}
-                               onChange={() => onToggleCompleted(item.name)}/>COMPLETED
+                               onChange={() => onToggleCompleted(item.id)}/>COMPLETED
                         <Link to={`/edit/${index}`}>EDIT</Link>
                         <button onClick={() => onUpdateNeighbours(index, index - 1)}>UPP ARROW</button>
                         <button onClick={() => onUpdateNeighbours(index, index + 1)}>DOWN ARROW</button>
