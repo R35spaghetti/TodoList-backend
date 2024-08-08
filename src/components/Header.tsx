@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 import {ReactElement} from "react";
-
+import "./Header.css"
 export function Header(): ReactElement {
     return (
         <header className="header">
