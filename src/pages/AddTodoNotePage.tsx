@@ -3,7 +3,7 @@ import {FormEventHandler, ReactElement, useState} from "react";
 import {Input} from "../components/Input.tsx";
 import {useTodoNoteContext} from "../hooks/useTodoNoteContext.ts";
 import {useNavigate} from "react-router-dom";
-import {generateUniqueId} from "../data.ts";
+import {generateUniqueId} from "../logic.ts";
 import "./TodoNote-Form.css";
 
 export function AddTodoNotePage(): ReactElement {

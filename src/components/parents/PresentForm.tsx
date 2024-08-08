@@ -1,6 +1,6 @@
 import {ReactElement, useState} from "react";
 import {ITodoNote, ITodoNoteContext} from "../../interfaces.ts";
-import {AddTodo, DeleteNoteById, SortTodos, UpdateNeighbours, UpdateSpecificTodoNote} from "../../data.ts";
+import {AddTodo, DeleteNoteById, SortTodos, UpdateNeighbours, UpdateSpecificTodoNote} from "../../logic.ts";
 import {Outlet} from "react-router-dom";
 import {Header} from "../Header.tsx";
 
