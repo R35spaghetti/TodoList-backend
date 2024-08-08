@@ -1,5 +1,6 @@
 import React, {ReactElement, useState} from "react";
 import {useTodoNoteContext} from "../hooks/useTodoNoteContext.ts";
+import "./SortsNotes.css";
 
 export function SortsNotes(): ReactElement {
     const {sortTodos} = useTodoNoteContext();
@@ -12,26 +13,24 @@ export function SortsNotes(): ReactElement {
 
     return (
         <div className="sort-options">
-            <div>
-                <label>
-                    <input
-                        type="radio"
-                        value="date"
-                        checked={selectedCriterion === 'date'}
-                        onChange={handleSortingChange}
-                    />
-                    Date
-                </label>
-                <label>
-                    <input
-                        type="radio"
-                        value="author"
-                        checked={selectedCriterion === 'author'}
-                        onChange={handleSortingChange}
-                    />
-                    Author
-                </label>
-            </div>
+            <label>
+                <input
+                    type="radio"
+                    value="date"
+                    checked={selectedCriterion === 'date'}
+                    onChange={handleSortingChange}
+                />
+                Date
+            </label>
+            <label>
+                <input
+                    type="radio"
+                    value="author"
+                    checked={selectedCriterion === 'author'}
+                    onChange={handleSortingChange}
+                />
+                Author
+            </label>
         </div>
     );
 }
