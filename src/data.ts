@@ -19,11 +19,17 @@ export function UpdateSpecificTodoNote(notes: ITodoNote[], noteToUpdate: ITodoNo
 }
 
 export function UpdateNeighbours(notes: ITodoNote[], chosenIndex: number, neighbour: number): ITodoNote[] {
-    const updatedNotes = [...notes];
-    const tempValue = updatedNotes[chosenIndex];
-    updatedNotes[chosenIndex] = updatedNotes[neighbour];
-    updatedNotes[neighbour] = tempValue;
-    return updatedNotes;
+
+    if (chosenIndex >= 0 && chosenIndex < notes.length && neighbour >= 0 && neighbour < notes.length) {
+        const updatedNotes = [...notes];
+        const tempValue = updatedNotes[chosenIndex];
+        updatedNotes[chosenIndex] = updatedNotes[neighbour];
+        updatedNotes[neighbour] = tempValue;
+        return updatedNotes;
+
+    }
+    return notes;
+
 }
 
 export function SortTodos(notes: ITodoNote[], criterion: "date" | "author"): ITodoNote[] {
