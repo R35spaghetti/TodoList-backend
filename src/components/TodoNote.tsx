@@ -1,5 +1,6 @@
 import {ITodoNote} from "../interfaces.ts";
 import {ReactElement} from "react";
+import "./TodoNote.css";
 
 interface ITodoProps {
     todoNote: ITodoNote;
@@ -16,8 +17,6 @@ export function TodoNote({todoNote}: ITodoProps): ReactElement {
             <p>{todoNote.name}</p>
             <label>description</label>
             <p>{todoNote.description}</p>
-            <label>completed</label>
-            <p>{todoNote.completed}</p>
         </article>
     );
 }
