@@ -12,7 +12,7 @@ export function SortsNotes(): ReactElement {
     };
 
     return (
-        <div className="sort-options">
+        <article className="sort-options">
             <label>
                 <input
                     type="radio"
@@ -31,6 +31,6 @@ export function SortsNotes(): ReactElement {
                 />
                 Author
             </label>
-        </div>
+        </article>
     );
 }

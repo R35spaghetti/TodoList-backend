@@ -11,17 +11,19 @@ export function TodoListPage(): ReactElement {
     return (
         <section>
             <SortsNotes/>
-            <section className="todo-list">
+            <section className="todo-list-container">
                 {todoNotes.map((item, index) => (
-                    <div key={item.id}>
+                    <section className="todNote-container" key={item.id}>
                         <TodoNote todoNote={item}/>
-                        <button onClick={() => onDelete(item.id)}>Delete</button>
-                        <input type="checkbox" id="completed" checked={item.completed}
-                               onChange={() => onToggleCompleted(item.id)}/>COMPLETED
-                        <Link to={`/edit/${index}`}>EDIT</Link>
-                        <button onClick={() => onUpdateNeighbours(index, index - 1)}>UPP ARROW</button>
-                        <button onClick={() => onUpdateNeighbours(index, index + 1)}>DOWN ARROW</button>
-                    </div>
+                        <section className="button-options">
+                            <button onClick={() => onDelete(item.id)}>Delete</button>
+                            <input type="checkbox" id="completed" checked={item.completed}
+                                   onChange={() => onToggleCompleted(item.id)}/>COMPLETED
+                            <Link to={`/edit/${index}`}>EDIT</Link>
+                            <button onClick={() => onUpdateNeighbours(index, index - 1)}>UPP ARROW</button>
+                            <button onClick={() => onUpdateNeighbours(index, index + 1)}>DOWN ARROW</button>
+                        </section>
+                    </section>
                 ))}
             </section>
         </section>
