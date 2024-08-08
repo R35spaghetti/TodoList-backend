@@ -42,12 +42,6 @@ export function AddTodoNotePage(): ReactElement {
                 <Input label="description"
                        onChange={(e) => setTodoNote(prevState => ({...prevState, description: e.target.value}))}
                        type="textarea" value={todoNote.description}/>
-                <Input label="completed"
-                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTodoNote(prevState => ({
-                           ...prevState,
-                           completed: e.target.checked
-                       }))}
-                       type="checkbox" value={todoNote.completed}/>
                 <button type="submit">Submit</button>
             </form>
         </>
