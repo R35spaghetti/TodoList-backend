@@ -4,7 +4,8 @@ namespace TodoList_backend.Models;
 
 public class Todo
 {
-    public int Id { get; private set; }
+    [Key]
+    public int Id { get;  set; }
     [Required]
     public DateTime Date { get; set; }
     [Required]
