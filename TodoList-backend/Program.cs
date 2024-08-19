@@ -12,6 +12,13 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<TodoContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("TodoContext") ??
                          throw new InvalidCastException("Connection string not found")));
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin",
+        b => b.WithOrigins("http://localhost:5047", "https://localhost:7240")
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+});
 
 var app = builder.Build();
 
@@ -28,6 +35,6 @@ app.UseHttpsRedirection();
 
 app.MapControllers();
 
-
+app.UseCors("AllowSpecificOrigin");
 
 app.Run();
