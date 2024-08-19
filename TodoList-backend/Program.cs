@@ -10,7 +10,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<TodoContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("TodoContext") ??
+    options.UseSqlite(builder.Configuration.GetConnectionString("TodoContext") ??
                          throw new InvalidCastException("Connection string not found")));
 
 var app = builder.Build();
