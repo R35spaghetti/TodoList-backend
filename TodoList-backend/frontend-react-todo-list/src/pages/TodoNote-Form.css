@@ -1,0 +1,20 @@
+.todo-note-form
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.todo-note-form label
+{
+    font-size: 1.5rem;
+    padding: 1rem;
+
+}
+.todo-note-form button
+{
+    font-size: 40px;
+    color: green;
+}

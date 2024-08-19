@@ -1,0 +1,8 @@
+.sort-options {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin: 5px;
+    padding: 5px;
+    width: 10%;
+}

@@ -1,0 +1,23 @@
+.todo-list-container
+{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    padding: 5px;
+}
+.todNote-container
+{
+    font-size: 20px;
+    padding: 10px;
+    border: 1rem ridge lightblue;
+}
+.button-options
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border: 3px solid lightblue;
+    gap: 5px;
+    padding: 5px;
+}
