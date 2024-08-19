@@ -1,13 +1,27 @@
-import {ReactElement, useState} from "react";
+import {ReactElement, useEffect, useState} from "react";
 import {ITodoNote, ITodoNoteContext} from "../../interfaces.ts";
 import {AddTodo, DeleteNoteById, SortTodos, UpdateNeighbours, UpdateSpecificTodoNote} from "../../logic.ts";
 import {Outlet} from "react-router-dom";
 import {Header} from "../Header.tsx";
+import {fetchTodos} from "../../hooks/FetchTodos.ts";
 
 export function PresentForm(): ReactElement {
-
-
+    
     const [todoNotes, setTodoNotes] = useState<ITodoNote[]>([]);
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const fetchedTodos = await fetchTodos();
+                setTodoNotes(fetchedTodos);
+            } catch (error) {
+                console.error("Failed to load todos:", error);
+            }
+        }
+        fetchData().then();
+    }, []);
+
+
 
     const onSubmit = (data: ITodoNote) => {
         const todoNote: ITodoNote = {
@@ -26,7 +40,8 @@ export function PresentForm(): ReactElement {
         setTodoNotes(todoNotes.map(item =>
             item.id === id ? {...item, completed: !item.completed} : item))
     }
-
+    
+    
     function onDelete(id: number) {
         const newNotes = DeleteNoteById(todoNotes, id)
         setTodoNotes(newNotes);
