@@ -15,10 +15,12 @@ builder.Services.AddDbContext<TodoContext>(options =>
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSpecificOrigin",
-        b => b.WithOrigins("http://localhost:5047", "https://localhost:7240")
+        b => b
             .AllowAnyMethod()
-            .AllowAnyHeader());
+            .AllowAnyHeader()
+            .SetIsOriginAllowed((_) => true));
 });
+
 
 var app = builder.Build();
 
