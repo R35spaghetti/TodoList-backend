@@ -10,7 +10,7 @@ export function TodoNote({todoNote}: ITodoProps): ReactElement {
     return (
         <article className="todoNote">
             <label>date</label>
-            <p>{todoNote.date.toDateString()}</p>
+            <p>{todoNote.date.toString()}</p>
             <label>author</label>
             <p>{todoNote.author}</p>
             <label>name</label>
