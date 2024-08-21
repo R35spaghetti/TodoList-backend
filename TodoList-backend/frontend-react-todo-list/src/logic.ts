@@ -1,10 +1,11 @@
 import {ITodoNote} from "./interfaces.ts";
-
+import {DeleteById} from "./hooks/FetchTodos.ts"
 export function AddTodo(collection: ITodoNote[], todoNote: ITodoNote): ITodoNote[] {
     return [...collection, todoNote]
 }
 
 export function DeleteNoteById(todoNotes: ITodoNote[], index: number): ITodoNote[] {
+    DeleteById(index).then(r => r);
     return todoNotes.filter(todoNotes => todoNotes.id !== index);
 }
 
