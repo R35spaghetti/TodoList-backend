@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using TodoList_backend.Data;
 using TodoList_backend.Models;
 
-namespace TodoList_backend
+namespace TodoList_backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
