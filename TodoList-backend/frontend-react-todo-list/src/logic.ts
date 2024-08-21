@@ -1,6 +1,7 @@
 import {ITodoNote} from "./interfaces.ts";
-import {DeleteById} from "./hooks/FetchTodos.ts"
+import {CreateTodo, DeleteById, UpdateTodo} from "./hooks/FetchTodos.ts"
 export function AddTodo(collection: ITodoNote[], todoNote: ITodoNote): ITodoNote[] {
+    CreateTodo(todoNote).then(r => r);
     return [...collection, todoNote]
 }
 
@@ -14,6 +15,7 @@ export function UpdateSpecificTodoNote(notes: ITodoNote[], noteToUpdate: ITodoNo
     if (index > -1) {
         const updatedNotes = [...notes];
         updatedNotes[index] = noteToUpdate;
+        UpdateTodo(updatedNotes[index]).then(r => r);
         return updatedNotes;
     }
     return notes;
