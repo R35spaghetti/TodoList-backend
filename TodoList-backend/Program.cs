@@ -14,11 +14,11 @@ builder.Services.AddDbContext<TodoContext>(options =>
                          throw new InvalidCastException("Connection string not found")));
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowSpecificOrigin",
+    options.AddPolicy("CORS",
         b => b
             .AllowAnyMethod()
             .AllowAnyHeader()
-            .SetIsOriginAllowed((_) => true));
+            .SetIsOriginAllowed(_ => true));
 });
 
 
@@ -31,12 +31,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors("CORS");
 
 app.UseHttpsRedirection();
 
 app.MapControllers();
 
-app.UseCors("AllowSpecificOrigin");
 
 app.Run();
