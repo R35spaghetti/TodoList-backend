@@ -1,12 +1,20 @@
 import {ITodoNote} from "./interfaces.ts";
 import {CreateTodo, DeleteById, UpdateTodo} from "./hooks/FetchTodos.ts"
 export function AddTodo(collection: ITodoNote[], todoNote: ITodoNote): ITodoNote[] {
-    CreateTodo(todoNote).then(r => r);
+    CreateTodo(todoNote).then(() => {
+        console.log("successfully delivered todos");
+    }).catch((error) => {
+        console.log(`failed to deliver todo ${error}`);
+    });
     return [...collection, todoNote]
 }
 
 export function DeleteNoteById(todoNotes: ITodoNote[], index: number): ITodoNote[] {
-    DeleteById(index).then(r => r);
+    DeleteById(index).then(() => {
+        console.log("successfully deleted");
+    }).catch((error) => {
+        console.log(`failed to delete todo ${error}`);
+    });
     return todoNotes.filter(todoNotes => todoNotes.id !== index);
 }
 
@@ -15,7 +23,11 @@ export function UpdateSpecificTodoNote(notes: ITodoNote[], noteToUpdate: ITodoNo
     if (index > -1) {
         const updatedNotes = [...notes];
         updatedNotes[index] = noteToUpdate;
-        UpdateTodo(updatedNotes[index]).then(r => r);
+        UpdateTodo(updatedNotes[index]).then(() => {
+            console.log("successfully updated");
+        }).catch((error) => {
+            console.log(`failed to update todo ${error}`);
+        });
         return updatedNotes;
     }
     return notes;
